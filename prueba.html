@@ -11,6 +11,7 @@
         <ul>
             <li v-for="item in people">{{ item }}</li>
         </ul>
+        <input type="text" v-model="name" v-on:keyup.enter="addName">
     </div>
 
 
@@ -22,6 +23,14 @@
             el: '#main',
             data:{
                 people:['Linda', 'Issabela', 'Mariana', 'Andrea']
+            },
+            name:'',
+            /* Methods */
+            methods:{
+                addName: function(){
+                    this.people.push(this.name);
+                    this.name = '';
+                }
             }
         });
     </script>

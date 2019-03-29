@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS - Events</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Eventos en VueJS</h2>
+                </div>
+                <div class="col-4">
+                    <form v-on:submit.prevent="addName">
+                        <div class="input-group">
+                            <input type="text" class="form-control" v-model="name">
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-secondary" value="add">
+                            </span>
+                        </div>
+                    </form>
+                    <hr>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="item in people" v-text="item"></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-success" v-on:click="num+=1">Like: {{ num }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script><!-- Vue -->
+    <!-- Vue Instance -->
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                people: ['Cristofer', 'Mauricio', 'Julian', 'Aley'],
+                name: '',
+                num:0
+            },
+            /* Methods */
+            methods: {
+                addName: function () {
+                    this.people.push(this.name);
+                    this.name = '';
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
